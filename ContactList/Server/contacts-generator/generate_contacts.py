@@ -28,18 +28,18 @@ def generate_contact(faker):
       "first_name": faker.first_name(),
       "last_name": faker.last_name(),
       "email": [
-         faker.company_email(),
-         faker.free_email()
+         {"Work": faker.company_email()},
+         {"Personal": faker.free_email()}
       ],
       "phone": [
-         faker.phone_number(),
-         faker.phone_number()
+         {"Work": faker.phone_number()},
+         {"Personal": faker.phone_number()}
       ],
       "company": faker.company(),
-      "hire_date": faker.date_between(start_date="-10y", end_date="today"),
+      "hire_date": faker.date_between(start_date="-10y", end_date="today").isoformat(),
       "location": [
-         generate_location(faker),
-         generate_location(faker)
+         {"Work": generate_location(faker)},
+         {"Home": generate_location(faker)}
       ]
    }
 
